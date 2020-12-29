@@ -1,0 +1,24 @@
+﻿@model PersonCase.ViewModels.NoteViewModel
+
+@{
+    ViewBag.Title = "Добавить заметку";
+    Layout = "_Layout";
+}
+<div class="container mt-3">
+    <h2>@ViewBag.Title</h2>
+    <form method="post" asp-action="AddNote">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <label asp-for="Title">Название:</label>
+            <input asp-for="Title" type="text" class="form-control" id="note-title" placeholder="Название">
+            <span asp-validation-for="Title"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Text">Текст заметки:</label>
+            <textarea asp-for="Text" class="form-control" id="note-text" placeholder="Текст заметки" rows="5"></textarea>
+            <span asp-validation-for="Text"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

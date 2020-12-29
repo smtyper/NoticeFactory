@@ -1,0 +1,12 @@
+﻿@model List<NoteAddition>
+
+<div class="mt-2">
+    @foreach (var addition in Model.OrderBy(x=>x.CreationDate))
+    {
+        <div class="card mb-2">
+            <div class="card-header">
+                @addition.Text
+            </div>
+        </div>
+    }
+</div>

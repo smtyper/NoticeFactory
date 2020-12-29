@@ -1,0 +1,30 @@
+@using PersonCase.ViewModels
+@model Note
+
+@{
+    ViewBag.Title = "Заметка";
+    Layout = "_Layout";
+}
+<div class="row mt-5 pl-5 pr-5">
+    <div class="col-md-8">
+        <div class="card ">
+            <div class="card-header">
+                Заметка от @Model.CreationDate.ToString("dd.MM.yyyy")
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.Title</h5>
+                <p class="card-text">@Model.Text</p>
+            </div>
+        </div>
+        @{
+            await Html.RenderPartialAsync("NoteAdditions", Model.NoteAdditions.ToList());
+        }
+    </div>
+    <div class="col-md-4">
+        @{
+            await Html.RenderPartialAsync("NoteAdditionCreate",
+                new NoteAdditionViewModel(),
+                new ViewDataDictionary(this.ViewData) {{"id", Model.Id}});
+        }
+    </div>
+</div>
